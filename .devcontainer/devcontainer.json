@@ -6,6 +6,10 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
 
+	// CWA - Added to force the amd64 version as the Azure Functions Core Tools needs x64 lib6
+	// azure-functions-core-tools - https://github.com/Azure/azure-functions-core-tools 
+	"runArgs": ["--platform=linux/amd64" ],
+
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
