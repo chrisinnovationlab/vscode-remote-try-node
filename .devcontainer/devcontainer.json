@@ -3,9 +3,21 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
 	"name": "Node.js",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
 
+	// Need to provide "image" or "build" option, see below 
+	//
+	// Use a Docker Hub Image More info: https://containers.dev/guide/dockerfile
+	# "image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	
+	// Using a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
+		// Append -bullseye or -buster to pin to an OS version.
+		// Use -bullseye variants on local arm64/Apple Silicon.
+		"args": { "VARIANT": "16-bullseye" }
+	},
+	
 	// CWA - Added to force the amd64 version as the Azure Functions Core Tools needs x64 lib6
 	// azure-functions-core-tools - https://github.com/Azure/azure-functions-core-tools 
 	"runArgs": ["--platform=linux/amd64" ],
